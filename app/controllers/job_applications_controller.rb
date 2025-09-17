@@ -12,7 +12,7 @@ class JobApplicationsController < ApplicationController
 
   # GET /job_applications/new
   def new
-    @job_application = JobApplication.new
+    @job_application = JobApplication.new(applied_on: Date.today)
   end
 
   # GET /job_applications/1/edit

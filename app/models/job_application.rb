@@ -5,4 +5,6 @@ class JobApplication < ApplicationRecord
 
   STATUSES = %w[active inactive rejected abandoned]
   validates :status, inclusion: { in: STATUSES }
+
+  validates :company_name, :job_title, :applied_on, presence: true
 end
