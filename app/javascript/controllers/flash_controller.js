@@ -14,6 +14,7 @@ export default class extends Controller {
     }
 
     dismiss() {
-        this.element.remove()
+        this.element.classList.add("opacity-0", "transition", "duration-700")
+        setTimeout(() => this.element.remove(), 700)
     }
 }
