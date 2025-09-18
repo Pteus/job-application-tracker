@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :job_applications
   resource :session
   resources :passwords, param: :token
+  resource :sign_up
 
   get "up" => "rails/health#show", as: :rails_health_check
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
