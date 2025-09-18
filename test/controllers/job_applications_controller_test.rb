@@ -2,7 +2,9 @@ require "test_helper"
 
 class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
     @job_application = job_applications(:one)
+    sign_in_as(@user) # helper method we'll define
   end
 
   test "should get index" do
@@ -17,10 +19,10 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job_application" do
     assert_difference("JobApplication.count") do
-      post job_applications_url, params: { job_application: { applied_on: @job_application.applied_on, company_name: @job_application.company_name, found_on: @job_application.found_on, job_title: @job_application.job_title, status: @job_application.status, user_id: @job_application.user_id } }
+      post job_applications_url, params: { job_application: { applied_on: @job_application.applied_on, company_name: @job_application.company_name, found_on: @job_application.found_on, job_title: @job_application.job_title, status: @job_application.status, user_id: @job_application.user_id, url: @job_application.url } }
     end
 
-    assert_redirected_to job_application_url(JobApplication.last)
+    assert_redirected_to job_applications_url
   end
 
   test "should show job_application" do
@@ -35,7 +37,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update job_application" do
     patch job_application_url(@job_application), params: { job_application: { applied_on: @job_application.applied_on, company_name: @job_application.company_name, found_on: @job_application.found_on, job_title: @job_application.job_title, status: @job_application.status, user_id: @job_application.user_id } }
-    assert_redirected_to job_application_url(@job_application)
+    assert_redirected_to job_applications_url
   end
 
   test "should destroy job_application" do
@@ -44,5 +46,11 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to job_applications_url
+  end
+
+  private
+
+  def sign_in_as(user)
+    post session_url, params: { email_address: user.email_address, password: "password" }
   end
 end

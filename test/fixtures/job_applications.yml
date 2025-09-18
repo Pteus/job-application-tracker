@@ -3,15 +3,17 @@
 one:
   company_name: MyString
   job_title: MyString
-  status: MyString
+  status: active
   applied_on: 2025-09-17
   found_on: MyString
   user: one
+  url: https://www.google.com
 
 two:
   company_name: MyString
   job_title: MyString
-  status: MyString
+  status: active
   applied_on: 2025-09-17
   found_on: MyString
   user: two
+  url: https://www.google.com
