@@ -12,8 +12,8 @@
     <% if @job_applications.any? %>
       <% @job_applications.each do |job_application| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render job_application %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+          <%= render_job_application(job_application) %>
+          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2 ml-6">
             <%= link_to "Details", job_application, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
             <%= link_to "Edit", edit_job_application_path(job_application), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
             <%= button_to "Delete", job_application, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>

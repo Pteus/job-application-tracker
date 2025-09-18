@@ -25,7 +25,7 @@ class JobApplicationsController < ApplicationController
 
     respond_to do |format|
       if @job_application.save
-        format.html { redirect_to @job_application, notice: "Job application was successfully created." }
+        format.html { redirect_to job_applications_path, notice: "Job application was successfully created." }
         format.json { render :show, status: :created, location: @job_application }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-        format.html { redirect_to @job_application, notice: "Job application was successfully updated.", status: :see_other }
+        format.html { redirect_to job_applications_path, notice: "Job application was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @job_application }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class JobApplicationsController < ApplicationController
     @job_application.destroy!
 
     respond_to do |format|
-      format.html { redirect_to job_applications_path, notice: "Job application was successfully destroyed.", status: :see_other }
+      format.html { redirect_to job_applications_path, notice: "Job application was successfully deleted.", status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -66,6 +66,6 @@ class JobApplicationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def job_application_params
-    params.expect(job_application: [:company_name, :job_title, :status, :applied_on, :found_on])
+    params.expect(job_application: [:company_name, :job_title, :status, :applied_on, :found_on, :notes, :url])
   end
 end

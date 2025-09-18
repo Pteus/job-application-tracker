@@ -1,22 +1,29 @@
-<div id="<%= dom_id job_application %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Company name:</strong>
-    <%= job_application.company_name %>
+<div id="<%= dom_id job_application %>" class="w-full my-5 p-4 bg-white rounded-lg shadow">
+  <% text_class = detailed_view ? 'break-words' : 'truncate' %>
+
+  <!-- Top fields in grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="<%= text_class %>"><strong>Company:</strong> <%= job_application.company_name %></div>
+    <div class="<%= text_class %>"><strong>Job title:</strong> <%= job_application.job_title %></div>
+    <div class="<%= detailed_view ? 'break-words' : '' %>">
+      <strong>Url:</strong>
+      <% if detailed_view %>
+        <%= link_to job_application.url, job_application.url, target: "_blank", rel: "noopener", class: "text-blue-600 hover:underline break-all" %>
+      <% else %>
+        <%= link_to truncate(job_application.url, length: 30), job_application.url, target: "_blank", rel: "noopener", class: "text-blue-600 hover:underline" %>
+      <% end %>
+    </div>
+    <div><strong>Status:</strong> <%= job_application.status.titleize %></div>
+    <div><strong>Applied on:</strong> <%= job_application.applied_on %></div>
+    <div class="<%= text_class %>"><strong>Found on:</strong> <%= job_application.found_on %></div>
   </div>
-  <div>
-    <strong class="block font-medium mb-1">Job title:</strong>
-    <%= job_application.job_title %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Status:</strong>
-    <%= job_application.status %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Applied on:</strong>
-    <%= job_application.applied_on %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Found on:</strong>
-    <%= job_application.found_on %>
-  </div>
+
+  <% if detailed_view %>
+    <!-- Notes below -->
+    <div class="mt-4">
+      <strong>Notes:</strong>
+      <div class="prose"><%= job_application.notes.to_s.html_safe %></div>
+    </div>
+  <% end %>
+
 </div>
