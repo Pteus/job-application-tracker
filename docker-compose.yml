@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    image: pteus91/job_application_tracker:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./db:/rails/db
+      - ./config/master.key:/rails/config/master.key:ro
+    container_name: job_application_tracker
+    restart: unless-stopped
