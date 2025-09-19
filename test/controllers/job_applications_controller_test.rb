@@ -4,7 +4,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @job_application = job_applications(:one)
-    sign_in_as(@user) # helper method we'll define
+    sign_in_as(@user)
   end
 
   test "should get index" do
