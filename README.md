@@ -1,5 +1,10 @@
 # Job Application Tracker
 
+[![CI/CD Pipeline](https://github.com/pteus/job-application-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/pteus/job-application-tracker/actions/workflows/ci.yml)
+[![Docker Hub](https://img.shields.io/docker/pulls/pteus91/job_application_tracker?logo=docker)](https://hub.docker.com/r/pteus91/job_application_tracker)
+[![Ruby](https://img.shields.io/badge/Ruby-3.2.2+-red?logo=ruby)](https://www.ruby-lang.org/)
+[![Rails](https://img.shields.io/badge/Rails-8-red?logo=rubyonrails)](https://rubyonrails.org/)
+
 A Ruby on Rails application for tracking job applications, built with Docker for easy deployment and evaluation.
 Note: For simplicity, this uses SQLite inside Docker. In real projects, you’d use Postgres/MySQL with Docker Compose.
 
